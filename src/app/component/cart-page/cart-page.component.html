@@ -1,0 +1,76 @@
+<ng-container *ngIf="showproduct.length !=0">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-9">
+                <h3>Cart Item</h3>
+                <table class="table table-borderless mt-3">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">Image</th>
+                            <th scope="col">Brand</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">price</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of showproduct">
+                            <td><img style="width: 120px;" src="{{item.images[0]}}"> </td>
+                            <td>{{item.title}}</td>
+                            <td>{{item.category}}</td>
+                            <td>FCFA{{item.price}}</td>
+                            <td><button (click)="deleteitem(item)" class="btn btn-danger">Delete</button></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+            <!-- Section -->
+
+            <div class="col-sm-3">
+                <h1>Total Amount: </h1>
+                <strong style="font-size: 35px; color:green;">FCFA{{totalamount}}</strong><br>
+                <div button class="btn group mt-3">
+                    <button class="btn btn-primary">Checkout</button>&nbsp;
+                    <button (click)="Empty() " class="btn btn-secondary">Empty Cart</button>
+                </div>
+                <!-- forms -->
+
+                <form>
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                    </div>
+                    <div class="form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+
+                  <!-- form ends -->
+
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<!-- Vider Panier -->
+
+<ng-container *ngIf="showproduct.length ==0">
+    <div class="card">
+        <div class="center">
+            <h4>Your Cart is Empty</h4>
+            <h6>Please Add Item</h6>
+            <button routerLink="/" class="btn btn-dark">Shop Now</button>
+        </div>
+
+    </div>
+</ng-container>
